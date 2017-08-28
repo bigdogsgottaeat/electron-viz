@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   </head>
   <body>
-    <div id="toolbar">
+    <div style="width: 100%; height:100%;">
+     <div id="toolbar">
        <div class="layout">
           <span class="tool">
               <button class="button" onclick="requestSelectFile()">
@@ -15,7 +16,7 @@
                <button class="button" onclick="requestSelectFile()">
                  <img src="assets/icons/save-icon.svg" style="padding-top:8px; width:18px; height:18px; text-align:center;" alt="Home" />
               </button>
-              <button class="button" onclick="requestSelectFile()">
+              <button class="button" onclick="addReceipt()">
                  <img src="assets/icons/add.svg" style="padding-top:8px; width:17px; height:17px; text-align:center;" alt="Home" />
                </button>
               <div style="position: absolute; right:0px; top:0px;">
@@ -23,13 +24,42 @@
                  <img src="assets/icons/info.svg" style="padding-top:8px; width:17px; height:17px; text-align:center;" alt="Home" />
               </button>
            </span>
-       </div>
-    <div>
+        </div>
+      </div>
+       <div id="myModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>Add Expense</h2>
+            </div>  
+            <div class="modal-body">        
+             <label class="modal-label" for="title">Title</label>
+             <input class="modal-entry" type="text" id="title" name="firstname" placeholder="title...">
+             <p/>
+             <label class="modal-label" for="reason">Reason</label>
+            <textarea class="modal-entry" id="reason" name="reason" placeholder="reason..." style="height:100px"></textarea>
+             <p/>
+             <button class='modal-btn'>Add</button>     
+         </div>
+      </div> 
+      <div>
+      </div>
     </div>
   </body>
   <script>
     
     const ipcRenderer = require('./assets/index.js').ipcRenderer
+
+    var modal = document.getElementById('myModal');
+
+   // Get the <span> element that closes the modal
+    var spanClose = document.getElementsByClassName("close")[0];
+
+    spanClose.onclick = function() {
+        
+      modal.style.display = "none";
+    
+    }
 
     function requestSelectFile()
     {
@@ -39,6 +69,14 @@
 
         }
   
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    function addReceipt()
+    {
+   
+      modal.style.display = "block";
+    
     }
 
 </script>

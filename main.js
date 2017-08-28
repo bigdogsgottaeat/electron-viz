@@ -66,7 +66,7 @@ app.on('activate', function () {
 
 ipcMain.on('select-file', (event, arg) => {
 
-  console.log(dialog.showOpenDialog({properties: ['openFile']}))
+  console.log(dialog.showOpenDialog({properties: ['openFile'  ]}))
     console.log('fred')
 
 });
