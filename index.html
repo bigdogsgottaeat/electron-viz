@@ -2,31 +2,45 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Sloth - SIEM Tool</title>
-    <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/nativize.css">
-    <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/about.css">
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/section.css">
-    <link rel="stylesheet" href="assets/css/demo.css">
-    <link rel="stylesheet" href="assets/css/github.css">
-    
+    <title>Electron Sloth - Receipt Manager</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   </head>
   <body>
-     <div class="nav-item u-category-windows">
-      <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-        Expenses
-      </h5>
-      <button type="button" id="button-windows" data-section="windows" class="nav-button">Travelling <em>windows</em></button>
-      <button type="button" id="button-crash-hang" data-section="crash-hang" class="nav-button">Hardware<em>crashes and hangs</em></button>
+    <div id="toolbar">
+       <div class="layout">
+          <span class="tool">
+              <button class="button" onclick="requestSelectFile()">
+                 <img src="assets/icons/open-folder-with-document.svg" style="padding-top:8px; width:18px; height:18px; text-align:center;" alt="Home" />
+              </button>
+               <button class="button" onclick="requestSelectFile()">
+                 <img src="assets/icons/save-icon.svg" style="padding-top:8px; width:18px; height:18px; text-align:center;" alt="Home" />
+              </button>
+              <button class="button" onclick="requestSelectFile()">
+                 <img src="assets/icons/add.svg" style="padding-top:8px; width:17px; height:17px; text-align:center;" alt="Home" />
+               </button>
+              <div style="position: absolute; right:0px; top:0px;">
+              <button class="button" onclick="requestSelectFile()">
+                 <img src="assets/icons/info.svg" style="padding-top:8px; width:17px; height:17px; text-align:center;" alt="Home" />
+              </button>
+           </span>
+       </div>
+    <div>
     </div>
-
   </body>
-
   <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+    
+    const ipcRenderer = require('./assets/index.js').ipcRenderer
+
+    function requestSelectFile()
+    {
+        if (ipcRenderer != null) {
+        
+         ipcRenderer.send('select-file', 'select-file')
+
+        }
+  
+    }
+
+</script>
+
 </html>

@@ -1,22 +1,19 @@
 {
   "name": "electron-sloth",
   "version": "1.0.0",
-  "description": "Electron Sloths",
+  "description": "Simple Receipt Manager",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/thesourorange/electron-slot.git",
+  "repository": "https://github.com/electron/electron-sloth",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
+    "Electron"
+ ],
+  "author": "thesourorange",
   "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "~1.6.2"
+  "dependencies": {
+    "electron": "~1.7.5"
   }
+
 }
