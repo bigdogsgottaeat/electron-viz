@@ -29,3 +29,20 @@ h1 {
 .hidden {
   display: none;
 }
+
+#mainbox {
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 350px;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 3px #888888;
+  border-top: 10px solid green;
+  min-height: 250px;
+  padding: 10px;
+  margin: 10px;
+}

@@ -34,7 +34,7 @@
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {padding: 2px 16px;display:block;}
 
 .modal-btn {
      position: relative;
@@ -69,17 +69,16 @@
 }
 
 .modal-label {
-    width: 100%; /* Full width */
     color: black;
-    position: relative;
     font-family: sans-serif;
-    font-size: 16;
-    left: -15px;
+    font-size: 12;
     font-weight: bold;
-}
+  }
 
 .modal-entry {
-    width: 100%; /* Full width */
+     width: 100%; /* Full width */
+     height: 24px;
+     margin-bottom: 12px;
 }
 
 /* Add animation (fade in the popup) */

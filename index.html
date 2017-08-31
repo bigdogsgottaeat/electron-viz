@@ -26,31 +26,28 @@
            </span>
         </div>
       </div>
-       <div id="myModal" class="modal">
+       <div id="expenseDialog" class="modal">
           <div class="modal-content">
             <div class="modal-header">
               <span class="close">&times;</span>
-              <h2>Add Expense</h2>
+              <h2>Add/Update Expense</h2>
             </div>  
-            <div class="modal-body">        
-             <label class="modal-label" for="title">Title</label>
+            <div class="modal-body">
+              <label class="modal-label" for="title">Title</label>
              <input class="modal-entry" type="text" id="title" name="title" placeholder="title...">
-             <p/>
-             <label class="modal-label" for="credit-card">Credit Card</label>
+             <label class="modal-label" for="credit-card">Credit Card</label>
              <input class="modal-entry" type="text" id="credit-card" name="credit-card" placeholder="card...">
-             <p/>
-             <label class="modal-label" for="amount">Amount</label>
+             <label class="modal-label" for="amount">Amount</label>
              <input class="modal-entry" type="text" id="amount" name="amount" placeholder="$...">
-             <p/>
-             <label class="modal-label" for="reason">Reason</label>
+             <label class="modal-label" for="reason">Reason</label>
              <textarea class="modal-entry" id="reason" name="reason" placeholder="reason..." style="height:40px"></textarea>
              <p/>
-             <button class='modal-btn'>Add</button>     
+             <button class='modal-btn' id="add">Add</button>     
              <button class='modal-btn'>Receipt...</button> 
              <button class='modal-cancel-btn'>Cancel</button>     
          </div>
       </div> 
-      <div>
+      <div id="mainbox">
       </div>
     </div>
   </body>
@@ -58,12 +55,31 @@
     
     const ipcRenderer = require('./assets/index.js').ipcRenderer
 
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById('expenseDialog');
 
    // Get the <span> element that closes the modal
     var spanClose = document.getElementsByClassName("close")[0];
 
-    spanClose.onclick = function() {
+    spanClose.onclick = function() 
+    {
+        
+      modal.style.display = "none";
+    
+    }
+
+    var cancelButton = document.getElementsByClassName("modal-cancel-btn")[0];
+
+    cancelButton.onclick = function() 
+    {
+        
+      modal.style.display = "none";
+    
+    }
+
+    var addButton = document.getElementById("add")
+
+    addButton.onclick = function() 
+    {
         
       modal.style.display = "none";
     
