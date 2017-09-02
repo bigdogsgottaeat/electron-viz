@@ -26,14 +26,16 @@
            </span>
         </div>
       </div>
-       <div id="expenseDialog" class="modal">
+      <div class="mainbox">
+      </div>  
+      <div id="expenseDialog" class="modal">
           <div class="modal-content">
             <div class="modal-header">
               <span class="close">&times;</span>
               <h2>Add/Update Expense</h2>
             </div>  
             <div class="modal-body">
-              <label class="modal-label" for="title">Title</label>
+            <label class="modal-label" for="title">Title</label>
              <input class="modal-entry" type="text" id="title" name="title" placeholder="title...">
              <label class="modal-label" for="credit-card">Credit Card</label>
              <input class="modal-entry" type="text" id="credit-card" name="credit-card" placeholder="card...">
@@ -47,8 +49,6 @@
              <button class='modal-cancel-btn'>Cancel</button>     
          </div>
       </div> 
-      <div id="mainbox">
-      </div>
     </div>
   </body>
   <script>
@@ -82,9 +82,14 @@
     {
         
       modal.style.display = "none";
+
+      var mainBox = document.getElementsByClassName("mainbox")[0];
+
+      mainBox.innerHTML += "<div class='card'><b>" +      
+          document.getElementById("title").value + "</b></div>";
     
     }
-
+  
     function requestSelectFile()
     {
         if (ipcRenderer != null) {
