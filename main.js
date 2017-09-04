@@ -10,6 +10,9 @@ const ipcMain = electron.ipcMain
 // Module to perform dialog integration
 const dialog = electron.dialog
 
+// Module to perform image manipulation
+const nativeImage = electron.nativeImage
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -22,7 +25,7 @@ var mainWindow = null
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1000, height: 800, autoHideMenuBar: true})
+  mainWindow = new BrowserWindow({width: 900, height: 700, autoHideMenuBar: true})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -67,9 +70,28 @@ app.on('activate', function () {
 ipcMain.on('select-file', (event, arg) => {
 
   console.log(dialog.showOpenDialog({properties: ['openFile'  ]}))
-    console.log('fred')
 
 });
 
+ipcMain.on('select-image', (event, arg) => {
+  
+  var fileName = dialog.showOpenDialog({properties: ['openFile', 
+  {
+    filters: [
+      {name: 'Images', extensions: ['jpg', 'png']},
+      {name: 'All Files', extensions: ['*']}
+    ]
+  }]});
+  
+  if (fileName != null) {
+
+      var image = nativeImage.createFromPath(fileName[0]);
+
+      event.returnValue = image.toDataURL();
+        
+  }
+  
+  });
+  
 
     
