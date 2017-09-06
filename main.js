@@ -18,6 +18,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const fs = require('fs')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -68,8 +69,9 @@ app.on('activate', function () {
 })
 
 ipcMain.on('select-file', (event, arg) => {
+  var fileName = dialog.showOpenDialog({properties: ['openFile'  ]});
 
-  console.log(dialog.showOpenDialog({properties: ['openFile'  ]}))
+  event.returnValue = fileName
 
 });
 

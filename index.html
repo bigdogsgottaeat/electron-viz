@@ -49,9 +49,11 @@
                     </button>
                   </div>
                   <textarea class="modal-entry" id="reason" name="reason" placeholder="reason..." style="height:40px"></textarea>
-                  <button class='modal-btn' id="add">Add</button>     
-                  <button class='modal-btn' id="add" onclick="requestSelectImage()">Upload</button>     
-                  <button class='modal-cancel-btn'>Cancel</button>
+                  <div style="padding: 10px">
+                    <button class='modal-btn' id="add">Add</button>     
+                    <button class='modal-btn' id="upload" onclick="requestSelectImage()">Upload</button>     
+                    <button class='modal-cancel-btn'>Cancel</button>
+                  </div>
                 </div>
                 <div style="position:absolute; left:72%; width:26%; top:80px; background:grey; height:270px;">
                   <img src="assets/icons/invoice.svg" id="receipt" style="width:100%; height:100%;" alt="Receipt" />
