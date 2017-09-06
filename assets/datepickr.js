@@ -37,6 +37,7 @@ var datepickr = function (selector, config) {
  */
 datepickr.init = function (element, instanceConfig) {
     'use strict';
+ 
     var self = this,
         defaultConfig = {
             dateFormat: 'F j, Y',
@@ -462,3 +463,5 @@ datepickr.init.prototype = {
         firstDayOfWeek: 0
     }
 };
+
+exports.datepickr = datepickr;

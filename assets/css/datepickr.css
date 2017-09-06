@@ -9,9 +9,6 @@
 	background-color: #eee;
 	color: #333;
 	border: 1px solid #ddd;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
 	padding: 2px;
 	display: none;
 	position: absolute;
@@ -25,11 +22,8 @@
 }
 
 .datepickr-calendar .datepickr-months {
-	background-color: #f6af3a;
-	border: 1px solid #e78f08;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
+	background-color: #4CAF50;
+	border: 1px solid #4CAF50;
 	color: #fff;
 	padding: 2px;
 	text-align: center;
@@ -41,9 +35,6 @@
 	color: #fff;
 	text-decoration: none;
 	padding: 0 .4em;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
 	cursor: pointer;
 }
 
@@ -61,8 +52,7 @@
 
 .datepickr-calendar .datepickr-prev-month:hover,
 .datepickr-calendar .datepickr-next-month:hover {
-	background-color: #fdf5ce;
-	color: #c77405;
+	color: black;
 }
 
 .datepickr-calendar table {

@@ -20,6 +20,8 @@ const path = require('path')
 const url = require('url')
 const fs = require('fs')
 
+const receipts = []
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null
@@ -85,15 +87,27 @@ ipcMain.on('select-image', (event, arg) => {
     ]
   }]});
   
-  if (fileName != null) {
+  event.returnValue = fileName;
 
-      var image = nativeImage.createFromPath(fileName[0]);
-
-      event.returnValue = image.toDataURL();
-        
-  }
-  
   });
   
+  ipcMain.on('upload-image', (event, arg) => {  
+     var image = nativeImage.createFromPath(arg[0]);
+  
+    event.returnValue = image.toDataURL();
+              
+  });
+  
+  ipcMain.on('push-receipt', (event, arg) => {  
+      
+    receipts.push(arg[0]);
 
+    event.returnValue = true;
+
+  });
     
+  ipcMain.on('get-receipt', (event, arg) => {  
+    
+    event.returnValue = receipts[arg[0]];
+
+});

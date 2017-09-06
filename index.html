@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Electron Sloth - Receipt Manager</title>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-  </head>
+   </head>
   <body>
     <div style="width: 100%; height:100%;">
      <div id="toolbar">
@@ -44,9 +44,6 @@
                   <div style="display: block; width:160px;">
                     <input class="modal-entry"  type="text" id="amount" name="amount" placeholder="$..." style="width:100px">
                     <input class="modal-entry"  type="text" id="date" name="date" placeholder="date..." style="width:100px">
-                    <button class="modal-small-btn">
-                      <img src="assets/icons/calendar.svg" style="padding-top:4px; width:10px; height:10px; text-align:center;" alt="Home" />
-                    </button>
                   </div>
                   <textarea class="modal-entry" id="reason" name="reason" placeholder="reason..." style="height:40px"></textarea>
                   <div style="padding: 10px">
@@ -63,15 +60,16 @@
       </div> 
     </div>
   </body>
-  <script>
-    
+  
+  <script>  
     const ipcRenderer = require('./assets/index.js').ipcRenderer; 
     const nativeImage = require('./assets/index.js').nativeImage;
     const dialog = require('./assets/index.js').dialog;
+    const datepickr = require('./assets/datepickr.js').datepickr;
     
     var modal = document.getElementById('expenseDialog');
  
-    var receipts = [];
+    datepickr(document.getElementById('date'));
 
    // Get the <span> element that closes the modal
     var spanClose = document.getElementsByClassName("close")[0];
@@ -120,10 +118,10 @@
     {
         if (ipcRenderer != null) {
         
-          var image = ipcRenderer.sendSync('select-image', 'receipt');
+          var fileName = ipcRenderer.sendSync('select-image', 'receipt');
   
-          if (receipt != null) {
-             receipt.src = image;
+          if (fileName != null) {
+             receipt.src = ipcRenderer.sendSync('upload-image', fileName);
           }
 
         }
