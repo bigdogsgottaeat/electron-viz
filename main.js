@@ -19,8 +19,10 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
+const vindexer = require('./assets/video-indexer')
+const fileURL = require('file-url')
 
-const receipts = []
+const Vindexer = new vindexer('55fdf694c6844b27996f06384fa210b8');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -71,43 +73,52 @@ app.on('activate', function () {
 })
 
 ipcMain.on('select-file', (event, arg) => {
-  var fileName = dialog.showOpenDialog({properties: ['openFile'  ]});
-
-  event.returnValue = fileName
-
-});
-
-ipcMain.on('select-image', (event, arg) => {
   
   var fileName = dialog.showOpenDialog({properties: ['openFile', 
   {
     filters: [
-      {name: 'Images', extensions: ['jpg', 'png']},
+      {name: 'Videos', extensions: ['mp4']},
       {name: 'All Files', extensions: ['*']}
     ]
   }]});
   
-  event.returnValue = fileName;
-
-  });
-  
-  ipcMain.on('upload-image', (event, arg) => {  
-     var image = nativeImage.createFromPath(arg[0]);
-  
-    event.returnValue = image.toDataURL();
-              
-  });
-  
-  ipcMain.on('push-receipt', (event, arg) => {  
-      
-    receipts.push(arg[0]);
-
-    event.returnValue = true;
-
-  });
-    
-  ipcMain.on('get-receipt', (event, arg) => {  
-    
-    event.returnValue = receipts[arg[0]];
+  if (fileName != null) {
+    event.returnValue = fileName;
+  } else {
+    event.returnValue = null
+  }
 
 });
+  
+ipcMain.on('upload-file', (event, arg) => { 
+
+  console.log('upload-file: '+ arg[0]);
+
+  Vindexer.uploadFile(arg[0], {
+        // Optional 
+        name: path.parse(arg[0]).name,
+        privacy: 'Private', 
+        language: 'English'
+    })
+     .then( function(result){ console.log (result.body) } );
+    
+    console.log('finished upload');
+
+});
+
+ipcMain.on('search-library', (event, arg) => { 
+  
+    console.log(arg);
+  
+    Vindexer.search({
+          // Optional 
+          privacy: 'Private',
+          query: arg,
+          pageSize: 10,
+          searchInPublicAccount: false
+       })
+       .then( function(result){ console.log (result.body) } );
+ 
+});
+  
+  
