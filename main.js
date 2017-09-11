@@ -22,7 +22,7 @@ const fs = require('fs')
 const vindexer = require('./assets/video-indexer')
 const fileURL = require('file-url')
 
-const Vindexer = new vindexer('55fdf694c6844b27996f06384fa210b8');
+const Vindexer = new vindexer('68ed73966e9d4d99a8bc4e8cc8f7753d');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
