@@ -135,6 +135,7 @@ Vindexer.prototype.uploadFile = function(fileName, params) {
                 "Content-Type": "multipart/form-data",
                 "Ocp-Apim-Subscription-Key": this.apiKey
             },
+            
             formData: {
                 name: 'file1',
                 file: {
